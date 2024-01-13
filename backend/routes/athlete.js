@@ -2,8 +2,9 @@ import express from "express";
 import { Athlete } from "../models/Athlete.js";
 import bcrypt from "bcrypt";
 const router = express.Router();
+import { verifyCoach } from "./auth.js";
 
-router.post("/register", async (req, res) => {
+router.post("/register", verifyCoach, async (req, res) => {
   try {
     const { username, password, roll } = req.body;
     const athlete = await Athlete.findOne({ username });

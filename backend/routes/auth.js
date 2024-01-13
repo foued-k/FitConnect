@@ -30,4 +30,20 @@ router.post("/login", async (req, res) => {
   }
 });
 
-export { router as CoachRouter };
+const verifyCoach = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.json({ message: "Coach is not valid" });
+  } else {
+    jwt.verify(token, process.env.Coach_Key, (err, decoded) => {
+      if (err) {
+        return res.json({ message: "Invalid Token" });
+      } else {
+        req.username = decoded.username;
+        res.role = decoded.role;
+        next();
+      }
+    });
+  }
+};
+export { router as CoachRouter, verifyCoach };
