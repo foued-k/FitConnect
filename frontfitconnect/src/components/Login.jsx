@@ -1,12 +1,29 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/Login.css";
+import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("athlete");
+  const [role, setRole] = useState("coach");
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {};
+  axios.defaults.withCredentials = true;
+  const handleSubmit = () => {
+    axios
+      .post("http://localhost:3001/auth/login", {
+        username,
+        password,
+        role,
+      })
+      .then((res) => {
+        if (res.data.login && res.data.role === "coach") {
+          navigate("/dashboard");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="login-page">

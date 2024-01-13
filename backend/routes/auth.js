@@ -1,5 +1,5 @@
 import express from "express";
-import { Coach } from "../models/Coach";
+import { Coach } from "../models/Coach.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 const router = express.Router();

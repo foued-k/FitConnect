@@ -14,6 +14,15 @@ const Navbar = () => {
         <Link to="/exercises" className="navbar-link">
           Exercises
         </Link>
+        <Link to="/addexercise" className="navbar-link">
+          Add Exercise
+        </Link>
+        <Link to="/addathlete" className="navbar-link">
+          Add Athlete
+        </Link>
+        <Link to="/dashboard" className="navbar-link">
+          Dashboard
+        </Link>
         <Link to="/login" className="navbar-link">
           Login
         </Link>
