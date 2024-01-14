@@ -19,10 +19,10 @@ const Login = ({ setRoleVar }) => {
       })
       .then((res) => {
         if (res.data.login && res.data.role === "coach") {
-          setRole("coach");
+          setRoleVar("coach");
           navigate("/dashboard");
         } else if (res.data.login && res.data.role === "athlete") {
-          setRole("athlete");
+          setRoleVar("athlete");
           navigate("/");
         }
         console.log(res);

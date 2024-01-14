@@ -27,6 +27,11 @@ const Navbar = ({ role }) => {
             </Link>
           </>
         )}
+        {role === "athlete" && (
+          <Link to="/exercises" className="navbar-link">
+            Exercises
+          </Link>
+        )}
         {role === "" ? (
           <Link to="/login" className="navbar-link">
             Login

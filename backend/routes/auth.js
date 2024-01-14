@@ -28,7 +28,7 @@ router.post("/login", async (req, res) => {
       if (!athlete) {
         return res.json({ message: "athlete not registered" });
       }
-      const validPassword = await bcrypt.compare(password, student.password);
+      const validPassword = await bcrypt.compare(password, athlete.password);
       if (!validPassword) {
         return res.json({ message: "Wrong Password" });
       }
@@ -61,6 +61,35 @@ const verifyCoach = (req, res, next) => {
     });
   }
 };
+
+const verifyAthlete = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.json({ message: "Athlete is not valid" });
+  } else {
+    jwt.verify(token, process.env.Coach_Key, (err, decoded) => {
+      if (err) {
+        jwt.verify(token, process.env.Athlete_Key, (err, decoded) => {
+          if (err) {
+            return res.json({ message: "Invalid Token" });
+          } else {
+            req.username = decoded.username;
+            res.role = decoded.role;
+            next();
+          }
+        });
+      } else {
+        req.username = decoded.username;
+        res.role = decoded.role;
+        next();
+      }
+    });
+  }
+};
+
+router.get("/verify", verifyAthlete, (req, res) => {
+  return res.json({ login: true, role: req.role });
+});
 
 router.get("/logout", (req, res) => {
   res.clearCookie("token");

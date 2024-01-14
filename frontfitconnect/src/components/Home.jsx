@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import "../css/Home.css";
+import axios from "axios";
 
 const Home = () => {
-  useEffect(() => {}, []);
   return (
     <div className="homepage">
       <div className="homepage-content">
