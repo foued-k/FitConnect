@@ -20,6 +20,8 @@ const Login = () => {
       .then((res) => {
         if (res.data.login && res.data.role === "coach") {
           navigate("/dashboard");
+        } else if (res.data.login && res.data.role === "athlete") {
+          navigate("/");
         }
         console.log(res);
       })
