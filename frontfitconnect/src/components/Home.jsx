@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../css/Home.css";
 
 const Home = () => {
+  useEffect(() => {}, []);
   return (
     <div className="homepage">
       <div className="homepage-content">

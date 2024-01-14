@@ -61,4 +61,9 @@ const verifyCoach = (req, res, next) => {
     });
   }
 };
+
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  return res.json({ logout: true });
+});
 export { router as CoachRouter, verifyCoach };

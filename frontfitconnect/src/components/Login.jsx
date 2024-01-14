@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/Login.css";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ setRoleVar }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("coach");
@@ -19,8 +19,10 @@ const Login = () => {
       })
       .then((res) => {
         if (res.data.login && res.data.role === "coach") {
+          setRole("coach");
           navigate("/dashboard");
         } else if (res.data.login && res.data.role === "athlete") {
+          setRole("athlete");
           navigate("/");
         }
         console.log(res);
