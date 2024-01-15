@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ExerciseCard = ({ exercise }) => {
+const ExerciseCard = ({ exercise, role }) => {
   const { name, description, imageUrl } = exercise;
   return (
     <div className="exercise-card">
@@ -10,18 +10,20 @@ const ExerciseCard = ({ exercise }) => {
         <h3>{name}</h3>
         <p>{description}</p>
       </div>
-      <div className="exercise-actions">
-        <button>
-          <Link to={`/exercise/${exercise._id}`} className="btn-link">
-            Edit
-          </Link>
-        </button>
-        <button>
-          <Link to={`/delete/${exercise._id}`} className="btn-link">
-            Delete
-          </Link>
-        </button>
-      </div>
+      {role === "coach" && (
+        <div className="exercise-actions">
+          <button>
+            <Link to={`/exercise/${exercise._id}`} className="btn-link">
+              Edit
+            </Link>
+          </button>
+          <button>
+            <Link to={`/delete/${exercise._id}`} className="btn-link">
+              Delete
+            </Link>
+          </button>
+        </div>
+      )}
     </div>
   );
 };

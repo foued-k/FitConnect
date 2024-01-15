@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ExerciseCard from "./ExerciseCard";
 import "../css/Exercises.css";
 
-const Exercises = () => {
+const Exercises = ({ role }) => {
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Exercises = () => {
     <div className="exercise-list">
       {exercises.map((exercise) => {
         return (
-          <ExerciseCard key={exercise.id} exercise={exercise}></ExerciseCard>
+          <ExerciseCard key={exercise.id} exercise={exercise} role={role}></ExerciseCard>
         );
       })}
     </div>
