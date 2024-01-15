@@ -12,6 +12,7 @@ import Logout from "./components/Logout";
 import axios from "axios";
 import AddExercise from "./components/AddExercise";
 import EditExercise from "./components/EditExercise";
+import DeleteExercise from "./components/DeleteExercise";
 
 function App() {
   const [role, setRole] = useState("");
@@ -41,6 +42,7 @@ function App() {
         <Route path="/logout" element={<Logout setRole={setRole} />}></Route>
         <Route path="/addexercise" element={<AddExercise />}></Route>
         <Route path="/exercise/:id" element={<EditExercise />}></Route>
+        <Route path="/delete/:id" element={<DeleteExercise />}></Route>
       </Routes>
     </BrowserRouter>
   );

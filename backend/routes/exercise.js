@@ -47,4 +47,14 @@ router.put("/exercise/:id", async (req, res) => {
   }
 });
 
+router.delete("/exercise/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const exercise = await Exercise.findByIdAndDelete({ _id: id });
+    return res.json({ deleted: true, exercise });
+  } catch (err) {
+    return res.json(err);
+  }
+});
+
 export { router as exerciseRouter };
