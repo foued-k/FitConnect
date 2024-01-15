@@ -43,9 +43,15 @@
   padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
+
   transition: background-color 0.3s ease-in-out;
 }
 
 .exercise-card button:hover {
   background-color: #2980b9;
+}
+
+.exercise-card .btn-link {
+  text-decoration: none;
+  color: white;
 }

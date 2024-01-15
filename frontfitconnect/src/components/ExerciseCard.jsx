@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ExerciseCard = ({ exercise }) => {
   const { name, description, imageUrl } = exercise;
@@ -10,8 +11,16 @@ const ExerciseCard = ({ exercise }) => {
         <p>{description}</p>
       </div>
       <div className="exercise-actions">
-        <button>edit</button>
-        <button>delete</button>
+        <button>
+          <Link to={`/exercise/${exercise._id}`} className="btn-link">
+            Edit
+          </Link>
+        </button>
+        <button>
+          <Link to={`/delete/${exercise._id}`} className="btn-link">
+            Delete
+          </Link>
+        </button>
       </div>
     </div>
   );

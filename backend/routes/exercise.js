@@ -27,4 +27,24 @@ router.get("/exercises", async (req, res) => {
   }
 });
 
+router.get("/exercise/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const exercise = await Exercise.findById({ _id: id });
+    return res.json(exercise);
+  } catch (err) {
+    return res.json(err);
+  }
+});
+
+router.put("/exercise/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const exercise = await Exercise.findByIdAndUpdate({ _id: id }, req.body);
+    return res.json({ updated: true, exercise });
+  } catch (err) {
+    return res.json(err);
+  }
+});
+
 export { router as exerciseRouter };

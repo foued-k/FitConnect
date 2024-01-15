@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import Logout from "./components/Logout";
 import axios from "axios";
 import AddExercise from "./components/AddExercise";
+import EditExercise from "./components/EditExercise";
 
 function App() {
   const [role, setRole] = useState("");
@@ -39,6 +40,7 @@ function App() {
         <Route path="/addathlete" element={<AddAthlete />}></Route>
         <Route path="/logout" element={<Logout setRole={setRole} />}></Route>
         <Route path="/addexercise" element={<AddExercise />}></Route>
+        <Route path="/exercise/:id" element={<EditExercise />}></Route>
       </Routes>
     </BrowserRouter>
   );
