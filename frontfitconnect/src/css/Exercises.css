@@ -1,7 +1,13 @@
+.exercise-page {
+  margin: 0;
+  padding: 0;
+  background-color: #f7f8f8;
+  height: 90vh;
+}
 .exercise-list {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .exercise-card {

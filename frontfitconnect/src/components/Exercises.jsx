@@ -16,12 +16,18 @@ const Exercises = ({ role }) => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div className="exercise-list">
-      {exercises.map((exercise) => {
-        return (
-          <ExerciseCard key={exercise.id} exercise={exercise} role={role}></ExerciseCard>
-        );
-      })}
+    <div className="exercise-page">
+      <div className="exercise-list">
+        {exercises.map((exercise) => {
+          return (
+            <ExerciseCard
+              key={exercise.id}
+              exercise={exercise}
+              role={role}
+            ></ExerciseCard>
+          );
+        })}
+      </div>
     </div>
   );
 };
